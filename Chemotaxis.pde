@@ -3,7 +3,7 @@
   void setup(){     
    size(500,500);
    background(255);   
-   dude = new Food[1000];
+   dude = new Food[2000];
    for (int j=0; j<dude.length; j++){
      dude[j] = new Food();
    }
@@ -31,6 +31,8 @@
 
   Food(){
     foodX = foodY = 250;
+    //foodX = (int)(Math.random()*width);
+    //foodY = (int)(Math.random()*height);
   }
 
   void move(){
@@ -40,7 +42,7 @@
 
   void show(){
     fill(0);
-
+    noStroke();
     ellipse(foodX,foodY,1,1);
   }
 }
@@ -56,6 +58,8 @@ class Bacteria{
    }
 
    void move(){
+
+    if (get(myX,myY) != color(255,0,0)){
      if (mouseX>myX){
        myX = myX + (int)(Math.random()*20);
      }else{
@@ -66,10 +70,17 @@ class Bacteria{
      }else{
        myY = myY - (int)(Math.random()*20); 
      }
+    }
+     else{
+       myX +=0;
+       myY +=0;
+      }
+      
    }
 
    void show(){
-     
+    noStroke();
+     fill(186, 29, 29);
      ellipse(myX,myY,1,1);
    }
  }    
